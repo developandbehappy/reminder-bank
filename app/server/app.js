@@ -89,6 +89,7 @@ app.post('/saveSettingForNotify', function (req, res) {
       "resultText": "Успешно сохранил настройки!"
     });
     updateSettingForNotify();
+    showMeNotify();
   });
 });
 
@@ -116,4 +117,4 @@ function setIntervalForNotify() {
 setIntervalForNotify();
 
 
-app.listen(3000);
+app.listen(9999);
