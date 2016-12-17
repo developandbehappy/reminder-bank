@@ -25,7 +25,7 @@ app.use(express.static(__dirname + '/../'));
 app.post('/addNewWord', function (req, res) {
   var data = req.body;
   if (data.ru && data.en) {
-    var randomId = _.random(0, 1000000);
+    var randomId = randomString(10);
     bankJsonFile.data[randomId] = {id: randomId, ru: data.ru, en: data.en};
     var json = JSON.stringify(bankJsonFile);
     fs.writeFile(bankJsonFilePath, json, 'utf8', function () {
@@ -121,5 +121,17 @@ function setIntervalForNotify() {
 }
 setIntervalForNotify();
 
+
+function randomString(L) {
+  var s = '';
+  var randomChar = function () {
+    var n = Math.floor(Math.random() * 62);
+    if (n < 10) return n; //1-10
+    if (n < 36) return String.fromCharCode(n + 55); //A-Z
+    return String.fromCharCode(n + 61); //a-z
+  };
+  while (s.length < L) s += randomChar();
+  return s;
+}
 
 app.listen(9999);

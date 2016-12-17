@@ -105,14 +105,10 @@
                           ng-options="opt.title for opt in options.mstep"></select>
                 </div>
               </div>
-              <div ng-if="showAlert" uib-alert class="alert alert-info">Успешно сохранил настройки</div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary pull-right" ng-click="saveStep(mstep)"
-                          ng-disabled="!mstep">Сохранить
-                  </button>
-                </div>
-              </div>
+              <div ng-if="showAlert" uib-alert class="alert alert-info col-xs-7">Успешно сохранил настройки</div>
+              <button type="submit" class="btn btn-primary pull-right col-xs-4" ng-click="saveStep(mstep)"
+                      ng-disabled="!mstep">Сохранить
+              </button>
             </form>
           </div>
         </div>
