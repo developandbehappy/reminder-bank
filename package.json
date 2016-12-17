@@ -1,0 +1,25 @@
+{
+  "name": "reminder-bank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zidein07/reminder-bank.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zidein07/reminder-bank/issues"
+  },
+  "homepage": "https://github.com/zidein07/reminder-bank#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.17.2",
+    "node-notifier": "^4.6.1"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "reminder-bank",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "zidein <zidein07@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/zidein07/reminder-bank",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "lodash": "^4.17.2",
+    "jquery": "^3.1.1",
+    "angular": "^1.6.0"
+  }
+}
