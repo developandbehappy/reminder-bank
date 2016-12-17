@@ -1,7 +1,6 @@
 reminder.controller('getAllWords', function ($scope, $interval) {
   $scope.words = [];
 
-
   $scope.removeWord = function (id) {
     $.post("removeWord", {
       id: id
@@ -37,6 +36,7 @@ reminder.controller('getAllWords', function ($scope, $interval) {
   $scope.reloadWords = function () {
     $.get("/getAllWords", function (data) {
       $scope.words = data;
+      $scope.wordsSize = _.size($scope.words);
       $scope.$apply();
     });
   };

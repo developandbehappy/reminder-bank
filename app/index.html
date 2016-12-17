@@ -49,10 +49,11 @@
 
       <uib-tab index="1" heading="Все сохраненные слова">
         <div ng-controller="getAllWords">
+          <h3 class="pull-right">Всего слов: <span class="label label-primary">{{ wordsSize }}</span></h3>
+
           <table class="table table-condensed">
             <thead>
             <tr>
-              <th class="text-center">id</th>
               <th class="text-center">С русского</th>
               <th class="text-center">На английский</th>
               <th class="text-center">Удаление</th>
@@ -60,7 +61,6 @@
             </thead>
             <tbody>
             <tr ng-repeat="word in words">
-              <th class="text-center" scope="row" ng-bind="word.id"></th>
               <td ng-if="!word.canChange" class="text-center" ng-click="changeWord(word)" ng-bind="word.ru"></td>
               <td ng-if="!word.canChange" class="text-center" ng-click="changeWord(word)" ng-bind="word.en"></td>
               <td ng-if="word.canChange" class="text-center">
@@ -84,7 +84,11 @@
             </tr>
             </tbody>
           </table>
-          <button ng-click="reloadWords()" class="btn btn-primary pull-left">Обновить все</button>
+
+
+          <div class="text-center">
+            <button ng-click="reloadWords()" class="btn btn-primary">Обновить все</button>
+          </div>
 
         </div>
       </uib-tab>
@@ -97,13 +101,16 @@
               <h6>Текущий период обновления: {{ mySetting.title }}</h6>
               <div class="form-group">
                 <div class="col-sm-12">
-                  <select class="form-control" ng-model="mstep" ng-options="opt.title for opt in options.mstep"></select>
+                  <select class="form-control" ng-model="mstep"
+                          ng-options="opt.title for opt in options.mstep"></select>
                 </div>
               </div>
               <div ng-if="showAlert" uib-alert class="alert alert-info">Успешно сохранил настройки</div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary pull-right" ng-click="saveStep(mstep)" ng-disabled="!mstep">Сохранить</button>
+                  <button type="submit" class="btn btn-primary pull-right" ng-click="saveStep(mstep)"
+                          ng-disabled="!mstep">Сохранить
+                  </button>
                 </div>
               </div>
             </form>

@@ -23,10 +23,10 @@ app.use(express.static(__dirname + '/../'));
 
 
 app.post('/addNewWord', function (req, res) {
-  console.log('req.body', req.body);
   var data = req.body;
   if (data.ru && data.en) {
-    bankJsonFile.data[_.size(bankJsonFile.data)] = {id: _.size(bankJsonFile.data), ru: data.ru, en: data.en};
+    var randomId = _.random(0, 1000000);
+    bankJsonFile.data[randomId] = {id: randomId, ru: data.ru, en: data.en};
     var json = JSON.stringify(bankJsonFile);
     fs.writeFile(bankJsonFilePath, json, 'utf8', function () {
       res.send({
@@ -81,7 +81,6 @@ app.post('/removeWord', function (req, res) {
 app.post('/saveSettingForNotify', function (req, res) {
   settingJson.timeout = req.body.time;
   settingJson.title = req.body.title;
-  console.log('req.body', req.body);
   var json = JSON.stringify(settingJson);
   fs.writeFile(settingJsonPath, json, 'utf8', function () {
     res.send({
@@ -98,13 +97,19 @@ function updateSettingForNotify() {
 }
 
 function showMeNotify() {
-  var randomDataFromFile = bankJsonFile.data[_.random(0, _.size(bankJsonFile.data) - 1)];
-  notifier.notify({
-    title: randomDataFromFile.en + ' - ' + randomDataFromFile.ru,
-    subtitle: bankJsonFile.name,
-    message: ' ',
-    timeout: 10
+  var processingDataFile = _.map(bankJsonFile.data, function (item) {
+    return item;
   });
+  console.log('processingDataFile', processingDataFile);
+  if (_.size(processingDataFile)) {
+    var randomDataFromFile = processingDataFile[_.random(0, _.size(processingDataFile) - 1)];
+    notifier.notify({
+      title: randomDataFromFile.en,
+      subtitle: ' ',
+      message: randomDataFromFile.ru,
+      timeout: 10
+    });
+  }
 }
 
 
